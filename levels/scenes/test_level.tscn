@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://db8ldpmdev8jw"]
+[gd_scene load_steps=7 format=3 uid="uid://db8ldpmdev8jw"]
 
 [ext_resource type="PackedScene" uid="uid://saxvso8pechn" path="res://terrain/scenes/terrain.tscn" id="1_pdoqw"]
 [ext_resource type="PackedScene" uid="uid://bnhnfa1c7b2xu" path="res://terrain/scenes/interior.tscn" id="2_2xh3k"]
 [ext_resource type="PackedScene" uid="uid://xyccyi788kjc" path="res://character/scenes/character.tscn" id="2_ssxnj"]
 [ext_resource type="PackedScene" uid="uid://dckdb8ocduhfq" path="res://terrain/scenes/objects_terrain.tscn" id="3_ngicg"]
 [ext_resource type="PackedScene" uid="uid://cyf7svxt3vc4s" path="res://components/scenes/door_component.tscn" id="5_fs0pm"]
+[ext_resource type="PackedScene" uid="uid://tqhc03c8lcai" path="res://character/scenes/slime.tscn" id="6_nhtk8"]
 
 [node name="Level" type="Node2D"]
 
@@ -38,3 +39,9 @@ position = Vector2(259, 403)
 
 [node name="ObjectsTerrain" parent="YSort" instance=ExtResource("3_ngicg")]
 layer_0/tile_data = PackedInt32Array(720918, 0, 5, 851982, 0, 5, 1376252, 0, 5, 1179644, 0, 5, 917500, 0, 5, 655356, 0, 5, 393212, 0, 5, 131068, 0, 5, -65537, 0, 5, -131070, 0, 5, -131067, 0, 5, -131064, 0, 5, -131060, 0, 5, -131057, 0, 5, -131054, 0, 5, -131049, 0, 5, -131045, 0, 5, 131099, 0, 5, 393243, 0, 5, 1310720, 0, 5, 196617, 655360, 7, 262153, 655360, 8, 196618, 720896, 7, 262154, 720896, 8, 131095, 655360, 7, 196631, 655360, 8, 131096, 720896, 7, 196632, 720896, 8, 1638398, 655360, 7, 1703934, 655360, 8, 1638399, 720896, 7, 1703935, 720896, 8, 1572864, 655360, 7, 1638400, 655360, 8, 1572865, 720896, 7, 1638401, 720896, 8, 983044, 655360, 7, 1048580, 655360, 8, 983045, 720896, 7, 1048581, 720896, 8, 983046, 655360, 7, 1048582, 655360, 8, 983047, 720896, 7, 1048583, 720896, 8, 589843, 655360, 7, 655379, 655360, 8, 589844, 720896, 7, 655380, 720896, 8, 65537, 655360, 7, 131073, 655360, 8, 65538, 720896, 7, 131074, 720896, 8, 262134, 655360, 7, 327670, 655360, 8, 262135, 720896, 7, 327671, 720896, 8, 524278, 655360, 7, 589814, 655360, 8, 524279, 720896, 7, 589815, 720896, 8, 851958, 655360, 7, 917494, 655360, 8, 851959, 720896, 7, 917495, 720896, 8, 1179638, 655360, 7, 1245174, 655360, 8, 1179639, 720896, 7, 1245175, 720896, 8, 1048606, 655360, 7, 1114142, 655360, 8, 1048607, 720896, 7, 1114143, 720896, 8, -196613, 655360, 7, -131077, 655360, 8, -196612, 720896, 7, -131076, 720896, 8, -65544, 655360, 7, -8, 655360, 8, -65543, 720896, 7, -7, 720896, 8)
+
+[node name="Slime2" parent="YSort" instance=ExtResource("6_nhtk8")]
+position = Vector2(80, 376)
+
+[node name="Slime" parent="YSort" instance=ExtResource("6_nhtk8")]
+position = Vector2(224, 320)

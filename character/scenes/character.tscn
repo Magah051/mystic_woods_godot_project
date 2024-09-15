@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://xyccyi788kjc"]
+[gd_scene load_steps=41 format=3 uid="uid://xyccyi788kjc"]
 
 [ext_resource type="Script" path="res://character/scripts/character.gd" id="1_x0emt"]
 [ext_resource type="Texture2D" uid="uid://cjg47dwdgrtss" path="res://character/assets/player.png" id="2_7ei0g"]
@@ -717,6 +717,21 @@ tracks/2/keys = {
 "values": [30, 31, 32, 33, 34, 35]
 }
 
+[sub_resource type="Animation" id="Animation_8rnri"]
+resource_name = "deatch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [54, 55, 56]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pwlok"]
 _data = {
 "RESET": SubResource("Animation_64u4p"),
@@ -724,6 +739,7 @@ _data = {
 "attack_left": SubResource("Animation_fr75q"),
 "attack_right": SubResource("Animation_2yoey"),
 "attack_up": SubResource("Animation_mfsmb"),
+"deatch": SubResource("Animation_8rnri"),
 "idle_down": SubResource("Animation_bktwo"),
 "idle_left": SubResource("Animation_yu1dp"),
 "idle_right": SubResource("Animation_w1l2y"),
@@ -755,6 +771,29 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_hkrlj")
 blend_point_2/pos = Vector2(-1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_m88tq")
 blend_point_3/pos = Vector2(1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2u7tf"]
+animation = &"deatch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_btgak"]
+animation = &"deatch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_slgks"]
+animation = &"deatch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_li8n8"]
+animation = &"deatch"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_516xi"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_2u7tf")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_btgak")
+blend_point_1/pos = Vector2(0, -0.9)
+blend_point_2/node = SubResource("AnimationNodeAnimation_slgks")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_li8n8")
+blend_point_3/pos = Vector2(-1, 0)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r5gtj"]
@@ -805,15 +844,17 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yy8se"]
 states/attack/node = SubResource("AnimationNodeBlendSpace2D_vqsov")
-states/attack/position = Vector2(355, 265)
+states/attack/position = Vector2(337, 203)
+states/death/node = SubResource("AnimationNodeBlendSpace2D_516xi")
+states/death/position = Vector2(326, 284)
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_bhw7t")
 states/idle/position = Vector2(337, 59)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_1u4b8")
-states/walk/position = Vector2(337, 163)
+states/walk/position = Vector2(333, 129)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_731oj"]
 
-[node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("_attack_timer", "_animation_tree")]
+[node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("_attack_timer", "_animation_tree") groups=["character"]]
 position = Vector2(168, 89)
 script = ExtResource("1_x0emt")
 _attack_timer = NodePath("AttackTimer")
@@ -841,6 +882,7 @@ active = false
 tree_root = SubResource("AnimationNodeStateMachine_yy8se")
 anim_player = NodePath("../Animation")
 parameters/attack/blend_position = Vector2(0, 0)
+parameters/death/blend_position = Vector2(0, 0)
 parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
 
